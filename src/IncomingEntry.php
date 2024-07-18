@@ -223,6 +223,16 @@ class IncomingEntry
     }
 
     /**
+     * Determine if the incoming entry is a slow request.
+     *
+     * @return bool
+     */
+    public function isSlowRequest()
+    {
+        return $this->type === EntryType::REQUEST && ($this->content['slow'] ?? false);
+    }
+
+    /**
      * Determine if the incoming entry is an authorization gate check.
      *
      * @return bool
