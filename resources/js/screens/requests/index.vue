@@ -36,8 +36,18 @@
             </td>
 
             <td class="table-fit text-right text-muted">
-                <span v-if="slotProps.entry.content.duration">{{slotProps.entry.content.duration}}ms</span>
-                <span v-else>-</span>
+                <span
+                    class="badge badge-danger"
+                    v-if="
+                        slotProps.entry.content.duration &&
+                        slotProps.entry.content?.slow
+                    "
+                    >{{ slotProps.entry.content.duration }}ms</span
+                >
+                <span class="badge" v-else-if="slotProps.entry.content.duration"
+                    >{{ slotProps.entry.content.duration }}ms</span
+                >
+                <span class="badge" v-else>-</span>
             </td>
 
             <td class="table-fit text-muted" :data-timeago="slotProps.entry.created_at" :title="slotProps.entry.created_at">
